@@ -1,0 +1,11 @@
+# Folders
+.idea/
+reports/
+vendor/
+
+# Files
+.DS_Store
+.php_cs.cache
+composer.lock
+composer.phar
+Thumbs.db
