@@ -5,7 +5,7 @@ namespace tests;
 use PHPUnit_Framework_TestCase;
 use ReflectionClass;
 
-class TestCase extends PHPUnit_Framework_TestCase
+abstract class TestCase extends PHPUnit_Framework_TestCase
 {
     /**
      * Defines class/interface/trait under test.
@@ -16,6 +16,8 @@ class TestCase extends PHPUnit_Framework_TestCase
 
     /**
      * Get reflection from class under test.
+     *
+     * @return ReflectionClass
      */
     public function getReflection()
     {

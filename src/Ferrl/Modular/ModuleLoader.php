@@ -3,14 +3,28 @@
 namespace Ferrl\Modular;
 
 use Ferrl\Contracts\Modular\ModuleLoader as ModuleLoaderContract;
+use Ferrl\Contracts\Modular\ModuleNotFoundException;
 
 class ModuleLoader implements ModuleLoaderContract
 {
     /**
-     * Start all module loader logic. Usually this load all modules.
+     * Start all module loader logic.
+     *
+     * @throws ModuleNotFoundException
+     * @return void
      */
     public function run()
     {
-        // TODO: Implement run() method.
+        $modules = $this->getModulesList();
+    }
+
+    /**
+     * Get list from all modules from a config file.
+     *
+     * @return string[]
+     */
+    protected function getModulesList()
+    {
+        return config('modules.available');
     }
 }

@@ -15,8 +15,19 @@ class ModuleLoaderTest extends TestCase
     /**
      * Tests if entity under test is instantiable.
      */
-    public function testIsAnInterface()
+    public function testIsInstantiable()
     {
         $this->assertTrue($this->getReflection()->isInstantiable());
+    }
+
+    public function testCanGetListOfModules()
+    {
+        // setup test
+//        $modules = ['default'];
+//        config(['modules.available' => $modules]);
+//        $reflection = $this->getReflection();
+//        $reflection->getMethod('getModulesList')->setAccessible(true);
+//
+//        $this->assertEquals($modules, $reflection->getMethod('getModulesList')->invoke(new $this->underTest));
     }
 }
