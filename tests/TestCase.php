@@ -2,10 +2,12 @@
 
 namespace tests;
 
-use PHPUnit_Framework_TestCase;
+use App\Console\Kernel;
+use Illuminate\Foundation\Application;
+use Illuminate\Foundation\Testing\TestCase as LaravelTestCase;
 use ReflectionClass;
 
-abstract class TestCase extends PHPUnit_Framework_TestCase
+abstract class TestCase extends LaravelTestCase
 {
     /**
      * Defines class/interface/trait under test.
@@ -13,6 +15,19 @@ abstract class TestCase extends PHPUnit_Framework_TestCase
      * @var string
      */
     protected $underTest;
+
+    /**
+     * Creates the application.
+     *
+     * @return \Illuminate\Foundation\Application
+     */
+    public function createApplication()
+    {
+        $app = new Application(__DIR__.'/../stub/application/');
+        $app->make(Kernel::class)->bootstrap();
+
+        return $app;
+    }
 
     /**
      * Get reflection from class under test.

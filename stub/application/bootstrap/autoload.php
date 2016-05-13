@@ -1,5 +1,7 @@
 <?php
 
+define('LARAVEL_START', microtime(true));
+
 /*
 |--------------------------------------------------------------------------
 | Register The Composer Auto Loader
@@ -13,21 +15,20 @@
 */
 
 require __DIR__.'/../vendor/autoload.php';
-require __DIR__.'/TestCase.php';
-
-use Carbon\Carbon;
 
 /*
 |--------------------------------------------------------------------------
-| Set The Default Timezone
+| Include The Compiled Class File
 |--------------------------------------------------------------------------
 |
-| Here we will set the default timezone for PHP. PHP is notoriously mean
-| if the timezone is not explicitly set. This will be used by each of
-| the PHP date and date-time functions throughout the application.
+| To dramatically increase your application's performance, you may use a
+| compiled class file which contains all of the classes commonly used
+| by a request. The Artisan "optimize" is used to create this file.
 |
 */
 
-date_default_timezone_set('UTC');
+$compiledPath = __DIR__.'/cache/compiled.php';
 
-Carbon::setTestNow(Carbon::now());
+if (file_exists($compiledPath)) {
+    require $compiledPath;
+}

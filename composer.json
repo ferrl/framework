@@ -26,6 +26,14 @@
       "Ferrl\\": "src/Ferrl/"
     }
   },
+  "autoload-dev": {
+    "psr-4": {
+      "App\\": "stub/application/app/"
+    },
+    "files": [
+      "tests/TestCase.php"
+    ]
+  },
   "minimum-stability": "stable",
   "prefer-stable": true
 }
