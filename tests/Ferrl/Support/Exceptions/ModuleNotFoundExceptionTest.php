@@ -1,8 +1,8 @@
 <?php
 
-namespace tests\Ferrl\Contracts\Modular;
+namespace tests\Ferrl\Modular\Exceptions;
 
-use Ferrl\Contracts\Modular\ModuleNotFoundException;
+use Ferrl\Support\Exceptions\ModuleNotFoundException;
 use RuntimeException;
 use tests\TestCase;
 
@@ -14,7 +14,7 @@ class ModuleNotFoundExceptionTest extends TestCase
     protected $underTest = ModuleNotFoundException::class;
 
     /**
-     * Tests if entity under test is an interface.
+     * Entity under test must be an runtime exception.
      */
     public function testIsAnException()
     {

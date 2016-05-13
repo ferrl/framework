@@ -2,15 +2,15 @@
 
 namespace tests\Ferrl\Contracts\Modular;
 
-use Ferrl\Contracts\Modular\ModuleLoader;
+use Ferrl\Contracts\Modular\ModuleDefinition;
 use tests\TestCase;
 
-class ModuleLoaderTest extends TestCase
+class ModuleDefinitionTest extends TestCase
 {
     /**
      * {@inheritdoc}
      */
-    protected $underTest = ModuleLoader::class;
+    protected $underTest = ModuleDefinition::class;
 
     /**
      * Entity under test must be an interface.

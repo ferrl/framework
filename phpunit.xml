@@ -27,4 +27,7 @@
         <env name="SESSION_DRIVER" value="array"/>
         <env name="QUEUE_DRIVER" value="sync"/>
     </php>
+    <logging>
+        <log type="coverage-html" target="./reports" lowUpperBound="50" highLowerBound="80" />
+    </logging>
 </phpunit>

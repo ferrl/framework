@@ -40,4 +40,21 @@ abstract class TestCase extends LaravelTestCase
 
         return new ReflectionClass($underTest);
     }
+
+    /**
+     * Invoke an inaccessible (private/protected) method.
+     *
+     * @param string $method
+     * @param array $params
+     * @return mixed
+     */
+    protected function invokeInaccessibleMethod($method, array $params = [])
+    {
+        $reflection = $this->getReflection();
+        $instance = $reflection->newInstance();
+        $method = $reflection->getMethod($method);
+        $method->setAccessible(true);
+
+        return $method->invokeArgs($instance, $params);
+    }
 }

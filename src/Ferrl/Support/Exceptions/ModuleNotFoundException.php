@@ -1,6 +1,6 @@
 <?php
 
-namespace Ferrl\Contracts\Modular;
+namespace Ferrl\Support\Exceptions;
 
 use RuntimeException;
 
