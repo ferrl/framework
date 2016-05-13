@@ -14,7 +14,7 @@ interface ModuleDefinition
     /**
      * Bootstrap a new module.
      *
-     * @return boolean
+     * @return bool
      */
     public function bootstrap();
 }
