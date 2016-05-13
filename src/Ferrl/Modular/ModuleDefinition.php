@@ -9,7 +9,7 @@ class ModuleDefinition implements ModuleDefinitionContract
     /**
      * Name of the module.
      *
-     * @var string $name
+     * @var string
      */
     protected $name;
 
@@ -26,7 +26,7 @@ class ModuleDefinition implements ModuleDefinitionContract
     /**
      * Bootstrap a new module.
      *
-     * @return boolean
+     * @return bool
      */
     public function bootstrap()
     {

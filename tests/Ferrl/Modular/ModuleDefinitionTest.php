@@ -29,7 +29,7 @@ class ModuleDefinitionTest extends TestCase
         parent::setUp();
 
         /* @noinspection PhpIncludeInspection */
-        $this->modules = require realpath(__DIR__ . '/../../../stub/tests/modules.php');
+        $this->modules = require realpath(__DIR__.'/../../../stub/tests/modules.php');
 
         config(['modules' => $this->modules]);
     }
