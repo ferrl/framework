@@ -51,7 +51,11 @@ abstract class TestCase extends LaravelTestCase
     protected function invokeInaccessibleMethod($method, array $params = [])
     {
         $reflection = $this->getReflection();
-        $instance = $reflection->newInstance();
+        if (method_exists($this, 'constructorArgs')) {
+            $instance = $reflection->newInstanceArgs($this->constructorArgs());
+        } else {
+            $instance = $reflection->newInstance();
+        }
         $method = $reflection->getMethod($method);
         $method->setAccessible(true);
 

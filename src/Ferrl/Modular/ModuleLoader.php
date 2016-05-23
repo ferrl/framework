@@ -60,17 +60,9 @@ class ModuleLoader implements ModuleLoaderContract
      */
     protected function getFullyQualifiedModuleClassName($module)
     {
-        return config('modules.namespace').$this->inflector()->classify($module);
-    }
+        $inflector = new Inflector();
 
-    /**
-     * Get doctrine inflector.
-     *
-     * @return Inflector
-     */
-    protected function inflector()
-    {
-        return new Inflector();
+        return config('modules.namespace').'\\'.$inflector->classify($module);
     }
 
     /**

@@ -115,7 +115,7 @@ class ModuleLoaderTest extends TestCase
     }
 
     /**
-     * bootstrap must run smoothly for existing methods
+     * bootstrap must run smoothly for existing methods.
      */
     public function testRunsSmoothlyForExistingMethods()
     {

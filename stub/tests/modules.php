@@ -13,7 +13,7 @@ return [
     | priority loading the modules.
     |
     */
-    'namespace' => 'App\\Modules\\',
+    'namespace' => 'App\\Modules',
     'path' => app_path('Modules'),
 
     'available' => [
