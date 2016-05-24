@@ -75,7 +75,7 @@ class ModuleLoader implements ModuleLoaderContract
      */
     protected function enableModule($module)
     {
-        $definition = $this->getFullyQualifiedModuleClassName($module);
+        $definition = $this->getFullyQualifiedModuleClassName($module).'\\Module';
 
         if (! (class_exists($definition) || $this->app->bound($definition))) {
             throw new ModuleNotFoundException("Module {$definition} does'nt exist");

@@ -7,7 +7,7 @@ use Ferrl\Contracts\Modular\ModuleDefinition as ModuleDefinitionContract;
 use Illuminate\Routing\Router;
 use Illuminate\View\Factory as View;
 
-class ModuleDefinition implements ModuleDefinitionContract
+abstract class ModuleDefinition implements ModuleDefinitionContract
 {
     /**
      * Name of the module.
@@ -38,13 +38,20 @@ class ModuleDefinition implements ModuleDefinitionContract
     protected $prefix;
 
     /**
+     * Should create simple {controller}/{action} routes.
+     *
+     * @var bool
+     */
+    protected $simpleRouting = false;
+
+    /**
      * ModuleDefinition constructor.
      *
      * @param string $name
      */
     public function __construct($name)
     {
-        $this->name = $name;
+        $this->name = $this->name ?: $name;
     }
 
     /**
@@ -60,6 +67,16 @@ class ModuleDefinition implements ModuleDefinitionContract
     }
 
     /**
+     * Get module name.
+     *
+     * @return string
+     */
+    protected function getName()
+    {
+        return $this->name;
+    }
+
+    /**
      * Get module folder full path.
      *
      * @return string
@@ -68,7 +85,7 @@ class ModuleDefinition implements ModuleDefinitionContract
     {
         if (! $this->path) {
             $inflector = new Inflector();
-            $this->path = realpath(config('modules.path').'/'.$inflector->classify($this->name));
+            $this->path = realpath(config('modules.path').'/'.$inflector->classify($this->getName()));
         }
 
         return $this->path;
@@ -83,7 +100,7 @@ class ModuleDefinition implements ModuleDefinitionContract
     {
         if (! $this->namespace) {
             $inflector = new Inflector();
-            $this->namespace = config('modules.namespace').'\\'.$inflector->classify($this->name);
+            $this->namespace = config('modules.namespace').'\\'.$inflector->classify($this->getName());
         }
 
         return $this->namespace;
@@ -98,7 +115,7 @@ class ModuleDefinition implements ModuleDefinitionContract
     {
         if (! $this->prefix) {
             $inflector = new Inflector();
-            $this->prefix = $inflector->tableize($this->name);
+            $this->prefix = $inflector->tableize($this->getName());
         }
 
         return $this->prefix;
@@ -127,15 +144,11 @@ class ModuleDefinition implements ModuleDefinitionContract
     {
         /** @var Router $router */
         $router = app(Router::class);
-        $routesFile = realpath($this->getModulesFolder().'/routes.php');
+        $namespace = $this->getModulesNamespace().'\\Controllers';
 
-        if (file_exists($routesFile)) {
-            $namespace = $this->getModulesNamespace().'\\Controllers';
-
-            $router->group(compact('namespace'), function () use ($routesFile) {
-                require_once $routesFile;
-            });
-        }
+        $router->group(compact('namespace'), function () use ($router) {
+            $this->bindRoutes($router);
+        });
     }
 
     /**
@@ -153,4 +166,12 @@ class ModuleDefinition implements ModuleDefinitionContract
             $view->addNamespace($this->getModulesPrefix(), $viewsFolder);
         }
     }
+
+    /**
+     * Bind application routes.
+     *
+     * @param \Illuminate\Routing\Router $router
+     * @return void
+     */
+    abstract public function bindRoutes(Router $router);
 }

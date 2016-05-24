@@ -81,7 +81,7 @@ class ModuleLoaderTest extends TestCase
         /** @var Mockery\Mock $mock */
         $mock = Mockery::mock('Ferrl\Contracts\Modular\ModuleDefinition');
         $mock->shouldReceive('bootstrap')->once()->andReturn(true);
-        $this->app->instance('App\\Modules\\Frontend', $mock);
+        $this->app->instance('App\\Modules\\Frontend\\Module', $mock);
 
         $actual = $this->invokeInaccessibleMethod('enableModule', ['frontend']);
 
@@ -92,7 +92,7 @@ class ModuleLoaderTest extends TestCase
      * enableModule must fail to load nonexistent module.
      *
      * @expectedException \Ferrl\Support\Exceptions\ModuleNotFoundException
-     * @expectedExceptionMessage Module App\Modules\Nonexistent does'nt exist
+     * @expectedExceptionMessage Module App\Modules\Nonexistent\Module does'nt exist
      */
     public function testThrowsSemanticExceptionWhenModuleDoesNotExists()
     {
@@ -103,13 +103,13 @@ class ModuleLoaderTest extends TestCase
      * enableModule must fail to load module with wrong signature.
      *
      * @expectedException \Ferrl\Support\Exceptions\InvalidSignatureException
-     * @expectedExceptionMessage Class App\Modules\Frontend must implements ModuleDefinition interface
+     * @expectedExceptionMessage Class App\Modules\Frontend\Module must implements ModuleDefinition interface
      */
     public function testThrowsSemanticExceptionWhenModuleDoesNotImplementRightInterface()
     {
         /** @var Mockery\Mock $mock */
         $mock = Mockery::mock('Ferrl\Contracts\Modular\WrongModuleDefinition');
-        $this->app->instance('App\\Modules\\Frontend', $mock);
+        $this->app->instance('App\\Modules\\Frontend\\Module', $mock);
 
         $this->invokeInaccessibleMethod('enableModule', ['frontend']);
     }
@@ -122,8 +122,8 @@ class ModuleLoaderTest extends TestCase
         /** @var Mockery\Mock $mock */
         $mock = Mockery::mock('Ferrl\Contracts\Modular\ModuleDefinition');
         $mock->shouldReceive('bootstrap')->twice()->andReturn(true);
-        $this->app->instance('App\\Modules\\Frontend', $mock);
-        $this->app->instance('App\\Modules\\Other', $mock);
+        $this->app->instance('App\\Modules\\Frontend\\Module', $mock);
+        $this->app->instance('App\\Modules\\Other\\Module', $mock);
 
         $this->invokeInaccessibleMethod('bootstrap');
     }

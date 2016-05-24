@@ -2,6 +2,7 @@
 
 namespace tests\Ferrl\Modular;
 
+use App\Modules\Frontend\Module;
 use Ferrl\Modular\ModuleDefinition;
 use tests\TestCase;
 
@@ -10,7 +11,7 @@ class ModuleDefinitionTest extends TestCase
     /**
      * {@inheritdoc}
      */
-    protected $underTest = ModuleDefinition::class;
+    protected $underTest = Module::class;
 
     /**
      * Example of modules configuration.
@@ -100,8 +101,10 @@ class ModuleDefinitionTest extends TestCase
         /* @var \Illuminate\Routing\Router $router */
         $this->invokeInaccessibleMethod('loadRoutes');
         $router = app(\Illuminate\Routing\Router::class);
+        $action = $router->getRoutes()->getByName('frontend.index')->getAction();
 
         $this->assertTrue($router->has('frontend.index'));
+        $this->assertEquals('App\\Modules\\Frontend\\Controllers', $action['namespace']);
     }
 
     /**
