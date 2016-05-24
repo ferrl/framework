@@ -1,6 +1,7 @@
 # Laravel Framework (tools)
 
 [![StyleCI](https://styleci.io/repos/58581379/shield?style=flat)](https://styleci.io/repos/58581379)
+[![Code Climate](https://codeclimate.com/github/ferrl/framework/badges/gpa.svg)](https://codeclimate.com/github/ferrl/framework)
 [![Build Status](https://travis-ci.org/ferrl/framework.svg)](https://travis-ci.org/ferrl/framework)
 [![Total Downloads](https://poser.pugx.org/ferrl/framework/d/total.svg)](https://packagist.org/packages/ferrl/framework)
 [![Latest Stable Version](https://poser.pugx.org/ferrl/framework/v/stable.svg)](https://packagist.org/packages/ferrl/framework)
