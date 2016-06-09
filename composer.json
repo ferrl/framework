@@ -25,7 +25,10 @@
   "autoload": {
     "psr-4": {
       "Ferrl\\": "src/Ferrl/"
-    }
+    },
+    "files": [
+      "src/Ferrl/Support/helpers.php"
+    ]
   },
   "autoload-dev": {
     "psr-4": {
