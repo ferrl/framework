@@ -2,9 +2,10 @@
 
 namespace Ferrl\Modular;
 
+use Ferrl\Contracts\Modular\ModuleLoader as ModuleLoaderContract;
 use Illuminate\Support\ServiceProvider;
 
-class ModulesServiceProvider extends ServiceProvider
+class ModuleServiceProvider extends ServiceProvider
 {
     /**
      * Bootstrap any application services.
@@ -13,7 +14,8 @@ class ModulesServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $loader = new ModuleLoader;
+        /** @var ModuleLoaderContract $loader */
+        $loader = $this->app->make(ModuleLoaderContract::class);
         $loader->bootstrap();
     }
 
@@ -24,6 +26,8 @@ class ModulesServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->app->singleton(ModuleLoaderContract::class, function () {
+            return new ModuleLoader;
+        });
     }
 }
