@@ -10,6 +10,13 @@ use Illuminate\View\Factory as View;
 abstract class ModuleDefinition implements ModuleDefinitionContract
 {
     /**
+     * Laravel's container instance.
+     *
+     * @var \Illuminate\Foundation\Application
+     */
+    protected $app;
+
+    /**
      * Name of the module.
      *
      * @var string
@@ -47,10 +54,12 @@ abstract class ModuleDefinition implements ModuleDefinitionContract
     /**
      * ModuleDefinition constructor.
      *
+     * @param \Illuminate\Foundation\Application|null $app
      * @param string $name
      */
-    public function __construct($name)
+    public function __construct($app = null, $name = null)
     {
+        $this->app = $app ?: app();
         $this->name = $this->name ?: $name;
     }
 
@@ -143,7 +152,7 @@ abstract class ModuleDefinition implements ModuleDefinitionContract
     protected function loadRoutes()
     {
         /** @var Router $router */
-        $router = app(Router::class);
+        $router = $this->app->make(Router::class);
         $namespace = $this->getModulesNamespace().'\\Controllers';
 
         $router->group(compact('namespace'), function () use ($router) {
@@ -159,7 +168,7 @@ abstract class ModuleDefinition implements ModuleDefinitionContract
     protected function loadViews()
     {
         /** @var View $view */
-        $view = app(View::class);
+        $view = $this->app->make(View::class);
         $viewsFolder = realpath($this->getModulesFolder().'/Views');
 
         if (file_exists($viewsFolder)) {

@@ -82,7 +82,7 @@ class ModuleLoader implements ModuleLoaderContract
         }
 
         /** @var ModuleDefinitionContract $module */
-        $module = $this->app->make($definition, [$module]);
+        $module = $this->app->make($definition, [$this->app, $module]);
 
         if (! $module instanceof ModuleDefinitionContract) {
             throw new InvalidSignatureException("Class {$definition} must implements ModuleDefinition interface");

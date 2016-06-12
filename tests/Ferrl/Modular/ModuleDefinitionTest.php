@@ -27,7 +27,7 @@ class ModuleDefinitionTest extends TestCase
      */
     protected function constructorArgs()
     {
-        return (array) 'frontend';
+        return [$this->app, 'frontend'];
     }
 
     /**
