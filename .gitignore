@@ -1,6 +1,7 @@
 # Folders
 reports/
 vendor/
+stub/application/bootstrap/cache
 
 # Files
 .php_cs.cache

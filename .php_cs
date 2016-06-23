@@ -71,7 +71,7 @@ $fixers = [
 ];
 
 return Config::create()
-    ->finder(DefaultFinder::create()->in(__DIR__))
+    ->finder(DefaultFinder::create()->in(__DIR__.'/src'))
     ->fixers($fixers)
     ->level(FixerInterface::NONE_LEVEL)
     ->setUsingCache(true);

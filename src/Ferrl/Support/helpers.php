@@ -2,6 +2,21 @@
 
 namespace Helpers;
 
+if (! function_exists('add_breadcrumb')) {
+    /**
+     * Adds a new crumb to a default breadcrumb.
+     *
+     * @param string $title
+     * @param string|null $url
+     */
+    function add_breadcrumb($title, $url = null)
+    {
+        /** @var \Ferrl\Contracts\Support\Utils\Breadcrumb $breadcrumb */
+        $breadcrumb = app()->make(\Ferrl\Contracts\Support\Utils\Breadcrumb::class);
+        $breadcrumb->addCrumb($title, $url);
+    }
+}
+
 if (! function_exists('globals')) {
     /**
      * Alias to the registry function.
@@ -38,5 +53,19 @@ if (! function_exists('registry')) {
         }
 
         return config($key, $default);
+    }
+}
+
+if (! function_exists('render_breadcrumbs')) {
+    /**
+     * Renders the default breadcrumb.
+     *
+     * @return string
+     */
+    function render_breadcrumb()
+    {
+        /** @var \Ferrl\Contracts\Support\Utils\Breadcrumb $breadcrumb */
+        $breadcrumb = app()->make(\Ferrl\Contracts\Support\Utils\Breadcrumb::class);
+        return $breadcrumb->renderCrumbs();
     }
 }
