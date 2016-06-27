@@ -2,11 +2,40 @@
 
 namespace tests\Ferrl\Modular\Exceptions;
 
+use Ferrl\Contracts\Support\Utils\Breadcrumb as BreadcrumbContract;
+use Ferrl\Support\Utils\Breadcrumb;
 use Helpers;
+use Illuminate\View\Factory as View;
 use tests\TestCase;
 
 class HelpersTest extends TestCase
 {
+    /**
+     * Example of ferrl configuration.
+     *
+     * @var array|null
+     */
+    protected $ferrl = null;
+
+    /**
+     * Setup module configuration file.
+     *
+     * @return void
+     */
+    public function setUp()
+    {
+        parent::setUp();
+
+        /* @noinspection PhpIncludeInspection */
+        $this->ferrl = require realpath(__DIR__.'/../../../stub/tests/ferrl.php');
+
+        /** @var View $factory */
+        $factory = app(View::class);
+        $factory->addNamespace('layouts', realpath(__DIR__ . '/../../../stub/application/resources/layouts'));
+
+        config(['ferrl' => $this->ferrl]);
+    }
+
     /**
      * registry must return the fallback value if the key does'nt exist.
      */
@@ -45,7 +74,7 @@ class HelpersTest extends TestCase
     /**
      * globals works as a alias to registry.
      */
-    public function testReturnAllValues()
+    public function testGlobalsReturnAllValues()
     {
         Helpers\registry(['key1' => 'value1']);
         Helpers\registry(['key2' => 'value2']);
@@ -53,5 +82,24 @@ class HelpersTest extends TestCase
 
         $this->assertArrayHasKey('key1', $values);
         $this->assertArrayHasKey('key2', $values);
+    }
+
+    /**
+     * globals works as a alias to registry.
+     */
+    public function testBreadcrumbHelpers()
+    {
+        $this->app->singleton(BreadcrumbContract::class, function () {
+            return new Breadcrumb();
+        });
+
+        Helpers\add_breadcrumb('First', 'first.html');
+        Helpers\add_breadcrumb('Second', 'second.html');
+
+        $crawler = new \DOMDocument;
+        $crawler->loadHTML(Helpers\render_breadcrumb());
+
+        $this->assertEquals(1, $crawler->getElementsByTagName('ul')->length);
+        $this->assertEquals(2, $crawler->getElementsByTagName('li')->length);
     }
 }

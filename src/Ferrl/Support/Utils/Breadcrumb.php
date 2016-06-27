@@ -25,15 +25,27 @@ class Breadcrumb implements BreadcrumbContract
     }
 
     /**
+     * Returns path collection.
+     *
+     * @return Collection
+     */
+    public function getPath()
+    {
+        return $this->path;
+    }
+
+    /**
      * Adds a crumb to the path.
      *
      * @param string $title
      * @param string|null $url
-     * @return void
+     * @return static
      */
     public function addCrumb($title, $url = null)
     {
         $this->path->push($this->createCrumb($title, $url));
+
+        return $this;
     }
 
     /**
@@ -49,7 +61,7 @@ class Breadcrumb implements BreadcrumbContract
         $path = $this->path;
         $last = $this->path->last();
 
-        return $view->make($partial, compact('path', 'last'));
+        return $view->make($partial, compact('path', 'last'))->render();
     }
 
     /**
