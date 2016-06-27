@@ -66,6 +66,7 @@ if (! function_exists('render_breadcrumbs')) {
     {
         /** @var \Ferrl\Contracts\Support\Utils\Breadcrumb $breadcrumb */
         $breadcrumb = app()->make(\Ferrl\Contracts\Support\Utils\Breadcrumb::class);
+
         return $breadcrumb->renderCrumbs();
     }
 }

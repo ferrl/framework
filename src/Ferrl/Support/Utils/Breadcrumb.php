@@ -54,7 +54,7 @@ class Breadcrumb implements BreadcrumbContract
 
     /**
      * Creates a new crumb.
-     * 
+     *
      * @param string $title
      * @param string|null $url
      * @return Fluent
