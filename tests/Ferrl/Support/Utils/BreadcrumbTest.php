@@ -36,7 +36,7 @@ class BreadcrumbTest extends TestCase
 
         /** @var View $factory */
         $factory = app(View::class);
-        $factory->addNamespace('layouts', realpath(__DIR__ . '/../../../../stub/application/resources/layouts'));
+        $factory->addNamespace('layouts', realpath(__DIR__.'/../../../../stub/application/resources/layouts'));
 
         config(['ferrl' => $this->ferrl]);
     }
@@ -70,7 +70,7 @@ class BreadcrumbTest extends TestCase
     }
 
     /**
-     * renderCrumbs create an HTML list
+     * renderCrumbs create an HTML list.
      */
     public function testRenderCrumbsCreatesHtmlList()
     {
@@ -91,7 +91,7 @@ class BreadcrumbTest extends TestCase
      */
     public function testCreateCrumbCreatesFluentObject()
     {
-        /** @var Breadcrumb $breadcrumb */
+        /* @var Breadcrumb $breadcrumb */
         $crumb = $this->invokeInaccessibleMethod('createCrumb', ['Title', 'item.html']);
 
         $this->assertInstanceOf(Fluent::class, $crumb);
