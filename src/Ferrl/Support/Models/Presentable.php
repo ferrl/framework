@@ -4,7 +4,8 @@ namespace Ferrl\Support\Models;
 
 use ReflectionClass;
 
-trait Presentable {
+trait Presentable
+{
     /**
      * Returns the presenter instance.
      *
@@ -21,6 +22,6 @@ trait Presentable {
             return $this->presenterInstance;
         }
 
-        return null;
+        return;
     }
 }

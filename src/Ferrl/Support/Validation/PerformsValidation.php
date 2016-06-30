@@ -86,6 +86,6 @@ trait PerformsValidation
      */
     protected function hasErrors()
     {
-        return !!$this->errorBag->count();
+        return (bool) $this->errorBag->count();
     }
 }

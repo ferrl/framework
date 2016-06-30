@@ -5,7 +5,8 @@ namespace Ferrl\Support\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 
-class Presenter {
+class Presenter
+{
     /**
      * @var \Illuminate\Database\Eloquent\Model
      */
