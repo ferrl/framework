@@ -14,7 +14,7 @@ class Presenter
 
     /**
      * Presenter constructor.
-     * 
+     *
      * @param Model $model
      */
     public function __construct(Model $model)

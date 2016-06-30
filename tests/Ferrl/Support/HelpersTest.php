@@ -31,7 +31,7 @@ class HelpersTest extends TestCase
 
         /** @var View $factory */
         $factory = app(View::class);
-        $factory->addNamespace('layouts', realpath(__DIR__ . '/../../../stub/application/resources/layouts'));
+        $factory->addNamespace('layouts', realpath(__DIR__.'/../../../stub/application/resources/layouts'));
 
         config(['ferrl' => $this->ferrl]);
     }

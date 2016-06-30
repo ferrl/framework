@@ -21,7 +21,5 @@ trait Presentable
 
             return $this->presenterInstance;
         }
-
-        return;
     }
 }
