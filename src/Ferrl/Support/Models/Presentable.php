@@ -13,13 +13,11 @@ trait Presentable
      */
     public function present()
     {
-        if (isset($this->presenter)) {
-            if (! isset($this->presenterInstance)) {
-                $this->presenterInstance = (new ReflectionClass($this->presenter))
-                    ->newInstanceArgs([$this]);
-            }
-
-            return $this->presenterInstance;
+        if (! isset($this->presenterInstance)) {
+            $this->presenterInstance = (new ReflectionClass($this->presenter))
+                ->newInstanceArgs([$this]);
         }
+
+        return $this->presenterInstance;
     }
 }

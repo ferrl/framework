@@ -16,6 +16,29 @@ use Illuminate\Validation\ValidationException;
 trait PerformsValidation
 {
     /**
+     * Validates request.
+     *
+     * @param bool $throws
+     * @return bool
+     * @throws ValidationException
+     * @coverage
+     */
+    protected function valid($throws = true)
+    {
+        if ($this->hasErrors()) {
+            // @codeCoverageIgnoreStart
+            if ($throws) {
+                $this->throwValidationException();
+            }
+            // @codeCoverageIgnoreEnd
+
+            return false;
+        }
+
+        return true;
+    }
+
+    /**
      * Throws validation errors.
      *
      * @throws ValidationException
@@ -31,6 +54,20 @@ trait PerformsValidation
     }
 
     /**
+     * Instantiates and/or returns the error bag.
+     *
+     * @return MessageBag
+     */
+    protected function errorBag()
+    {
+        if (! isset($this->errorBag)) {
+            $this->errorBag = app(MessageBag::class);
+        }
+
+        return $this->errorBag;
+    }
+
+    /**
      * Adds a new error to the error bag.
      *
      * @param string $field
@@ -38,7 +75,7 @@ trait PerformsValidation
      */
     protected function addValidationError($field, $message)
     {
-        $this->errorBag->add($field, $message);
+        $this->errorBag()->add($field, $message);
     }
 
     /**
@@ -66,7 +103,7 @@ trait PerformsValidation
      */
     protected function formatValidationErrors()
     {
-        return $this->errorBag->getMessages();
+        return $this->errorBag()->getMessages();
     }
 
     /**
@@ -86,6 +123,6 @@ trait PerformsValidation
      */
     protected function hasErrors()
     {
-        return (bool) $this->errorBag->count();
+        return (bool) $this->errorBag()->count();
     }
 }

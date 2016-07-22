@@ -8,12 +8,23 @@ if (! function_exists('add_breadcrumb')) {
      *
      * @param string $title
      * @param string|null $url
+     * @return \Ferrl\Contracts\Support\Utils\Breadcrumb
      */
     function add_breadcrumb($title, $url = null)
     {
-        /** @var \Ferrl\Contracts\Support\Utils\Breadcrumb $breadcrumb */
-        $breadcrumb = app()->make(\Ferrl\Contracts\Support\Utils\Breadcrumb::class);
-        $breadcrumb->addCrumb($title, $url);
+        return breadcrumb()->addCrumb($title, $url);
+    }
+}
+
+if (! function_exists('breadcrumb')) {
+    /**
+     * Return a breadcrumb instance.
+     *
+     * @return \Ferrl\Contracts\Support\Utils\Breadcrumb
+     */
+    function breadcrumb()
+    {
+        return app()->make(\Ferrl\Contracts\Support\Utils\Breadcrumb::class);
     }
 }
 
@@ -64,9 +75,6 @@ if (! function_exists('render_breadcrumbs')) {
      */
     function render_breadcrumb()
     {
-        /** @var \Ferrl\Contracts\Support\Utils\Breadcrumb $breadcrumb */
-        $breadcrumb = app()->make(\Ferrl\Contracts\Support\Utils\Breadcrumb::class);
-
-        return $breadcrumb->renderCrumbs();
+        return breadcrumb()->renderCrumbs();
     }
 }

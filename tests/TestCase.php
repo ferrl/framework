@@ -17,6 +17,13 @@ abstract class TestCase extends LaravelTestCase
     protected $underTest;
 
     /**
+     * Keeps a instance of the class/interface/trait under test.
+     *
+     * @var string
+     */
+    protected $underTestInstance;
+
+    /**
      * Creates the application.
      *
      * @return \Illuminate\Foundation\Application
@@ -27,6 +34,16 @@ abstract class TestCase extends LaravelTestCase
         $app->make(Kernel::class)->bootstrap();
 
         return $app;
+    }
+
+    /**
+     * Parameters used to instantiate class under test.
+     *
+     * @return array
+     */
+    protected function constructorArgs()
+    {
+        return [];
     }
 
     /**
@@ -51,14 +68,14 @@ abstract class TestCase extends LaravelTestCase
     protected function invokeInaccessibleMethod($method, array $params = [])
     {
         $reflection = $this->getReflection();
-        if (method_exists($this, 'constructorArgs')) {
-            $instance = $reflection->newInstanceArgs($this->constructorArgs());
-        } else {
-            $instance = $reflection->newInstance();
+
+        if (! $this->underTestInstance) {
+            $this->underTestInstance = $reflection->newInstanceArgs($this->constructorArgs());
         }
+
         $method = $reflection->getMethod($method);
         $method->setAccessible(true);
 
-        return $method->invokeArgs($instance, $params);
+        return $method->invokeArgs($this->underTestInstance, $params);
     }
 }
