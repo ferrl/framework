@@ -8,7 +8,7 @@ use Ferrl\Support\Models\Presenter;
 class ModelPresenter extends Presenter
 {
     /**
-     * @var PresentableModel $model
+     * @var PresentableModel
      */
     protected $model;
 

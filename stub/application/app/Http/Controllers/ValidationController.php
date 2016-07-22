@@ -8,5 +8,4 @@ use Illuminate\Routing\Controller;
 class ValidationController extends Controller
 {
     use PerformsValidation;
-
 }

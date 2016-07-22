@@ -4,7 +4,6 @@ namespace tests\Ferrl\Support\Models;
 
 use App\Models\PresentableModel;
 use App\Models\Presenters\ModelPresenter;
-use Ferrl\Support\Models\Presenter;
 use tests\TestCase;
 
 class PresenterTest extends TestCase
