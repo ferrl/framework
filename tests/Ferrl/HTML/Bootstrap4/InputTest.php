@@ -28,7 +28,7 @@ class InputTest extends TestCase
     }
 
     /**
-     * convertArrayToDotNotation should remove array notation,
+     * convertArrayToDotNotation should remove array notation.
      */
     public function testConvertArrayToDotNotation()
     {

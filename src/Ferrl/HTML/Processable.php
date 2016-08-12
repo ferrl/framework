@@ -20,7 +20,7 @@ class Processable
      */
     public function errors()
     {
-       return session()->get('errors') ?: new ViewErrorBag;
+        return session()->get('errors') ?: new ViewErrorBag;
     }
 
     /**

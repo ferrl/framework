@@ -11,7 +11,7 @@ class Input extends Processable
      *
      * @var string
      */
-    protected $template = <<<HTML
+    protected $template = <<<'HTML'
 <fieldset class="form-group :validation-class: :group-class:">
     :has-label-begin:<label for=":id:">:label:</label>:has-label-end:
     <input type=":type:" class="form-control :class:" id=":id:" name=":name:" value=":value:" placeholder=":placeholder:">
@@ -50,7 +50,7 @@ HTML;
      */
     protected function canRetrieveOldValue($type)
     {
-        return !in_array($type, ['password']);
+        return ! in_array($type, ['password']);
     }
 
     /**
@@ -106,6 +106,6 @@ HTML;
      */
     protected function convertArrayToDotNotation($key, $dot = '.')
     {
-        return preg_replace('/\[([A-z\-]+)\]/U', $dot."$1", $key);
+        return preg_replace('/\[([A-z\-]+)\]/U', $dot.'$1', $key);
     }
 }
