@@ -93,7 +93,7 @@ class InputTest extends TestCase
      */
     public function testRendersAnInputTextField()
     {
-        $expected = <<<HTML
+        $expected = <<<'HTML'
 <fieldset class="form-group has-success margin-top">
     <label for="athlete_name">Name</label>
     <input type="text" class="form-control no-border-radius" id="athlete_name" name="athlete[name]" value="@ferrl" placeholder="Enter your full name">
@@ -110,7 +110,7 @@ HTML;
      */
     public function testRendersAnInputPasswordField()
     {
-        $expected = <<<HTML
+        $expected = <<<'HTML'
 <fieldset class="form-group has-success margin-top">
     <label for="athlete_password">Password</label>
     <input type="password" class="form-control no-border-radius" id="athlete_password" name="athlete[password]" value="" placeholder="Enter your password">
