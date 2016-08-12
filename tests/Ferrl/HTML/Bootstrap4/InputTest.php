@@ -90,7 +90,6 @@ class InputTest extends TestCase
 
     /**
      * render full text field.
-     * @todo test password field
      */
     public function testRendersAnInputTextField()
     {
@@ -102,6 +101,23 @@ class InputTest extends TestCase
 </fieldset>
 HTML;
         $actual = $this->invokeInaccessibleMethod('render', ['athlete[name]', '@ferrl', 'text', ['class' => 'no-border-radius', 'group-class' => 'margin-top', 'placeholder' => 'Enter your full name', 'help' => 'No abbreviations', 'label' => 'Name']]);
+
+        $this->assertEquals($expected, $actual);
+    }
+
+    /**
+     * render full password field.
+     */
+    public function testRendersAnInputPasswordField()
+    {
+        $expected = <<<HTML
+<fieldset class="form-group has-success margin-top">
+    <label for="athlete_password">Password</label>
+    <input type="password" class="form-control no-border-radius" id="athlete_password" name="athlete[password]" value="" placeholder="Enter your password">
+    <small class="text-muted">Must contain at least one special character</small>
+</fieldset>
+HTML;
+        $actual = $this->invokeInaccessibleMethod('render', ['athlete[password]', '@ferrl', 'password', ['class' => 'no-border-radius', 'group-class' => 'margin-top', 'placeholder' => 'Enter your password', 'help' => 'Must contain at least one special character', 'label' => 'Password']]);
 
         $this->assertEquals($expected, $actual);
     }

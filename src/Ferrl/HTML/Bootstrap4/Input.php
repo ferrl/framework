@@ -35,7 +35,7 @@ HTML;
             'type' => $type ?: 'text',
             'validation-class' => $this->getValidationClassAttribute($name),
             'id' => $this->getIdAttribute($name, $attributes),
-            'value' => $this->canRetrieveOldValue($name) ?
+            'value' => $this->canRetrieveOldValue($type) ?
                 $this->getValueAttribute($name, $value) : null,
         ];
 
@@ -45,12 +45,12 @@ HTML;
     /**
      * Can retrieve old value or should hide.
      *
-     * @param string $name
+     * @param string $type
      * @return bool
      */
-    protected function canRetrieveOldValue($name)
+    protected function canRetrieveOldValue($type)
     {
-        return !in_array($name, ['password']);
+        return !in_array($type, ['password']);
     }
 
     /**
