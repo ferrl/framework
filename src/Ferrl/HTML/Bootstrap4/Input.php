@@ -2,9 +2,10 @@
 
 namespace Ferrl\HTML\Bootstrap4;
 
+use Ferrl\Contracts\HTML\Input as InputContract;
 use Ferrl\HTML\Processable;
 
-class Input extends Processable
+class Input extends Processable implements InputContract
 {
     /**
      * HTML template for text field.
@@ -14,7 +15,7 @@ class Input extends Processable
     protected $template = <<<'HTML'
 <fieldset class="form-group :validation-class: :group-class:">
     :has-label-begin:<label for=":id:">:label:</label>:has-label-end:
-    <input type=":type:" class="form-control :class:" id=":id:" name=":name:" value=":value:" placeholder=":placeholder:">
+    <input type=":type:" class="form-control :class:" id=":id:" name=":name:" value=":value:" placeholder=":placeholder:" :has-required-begin:required:has-required-end:>
     :has-help-begin:<small class="text-muted">:help:</small>:has-help-end:
 </fieldset>
 HTML;
@@ -39,7 +40,7 @@ HTML;
                 $this->getValueAttribute($name, $value) : null,
         ];
 
-        return $this->process(array_merge($attributes, $merge));
+        return $this->process($this->joinAttributes($attributes, $merge));
     }
 
     /**
@@ -107,5 +108,24 @@ HTML;
     protected function convertArrayToDotNotation($key, $dot = '.')
     {
         return preg_replace('/\[([A-z\-]+)\]/U', $dot.'$1', $key);
+    }
+
+    /**
+     * Join attributes array with class specifics.
+     *
+     * @param array $attributes
+     * @param array $merge
+     * @return array
+     */
+    protected function joinAttributes($attributes, $merge)
+    {
+        foreach ($attributes as $key => $value) {
+            if (is_int($key)) {
+                $attributes[$value] = '';
+                unset($attributes[$key]);
+            }
+        }
+
+        return array_merge($attributes, $merge);
     }
 }

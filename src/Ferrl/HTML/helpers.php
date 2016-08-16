@@ -1,6 +1,6 @@
 <?php
 
-namespace HTML;
+namespace Helpers;
 
 if (! function_exists('input_field')) {
     /**
@@ -15,7 +15,7 @@ if (! function_exists('input_field')) {
     function input_field($name, $value = null, $type = null, $attributes = [])
     {
         /** @var Input $input */
-        $input = app(\Ferrl\HTML\Bootstrap4\Input::class);
+        $input = app(\Ferrl\Contracts\HTML\Input::class);
 
         return $input->render($name, $value, $type, $attributes);
     }

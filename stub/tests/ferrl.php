@@ -11,5 +11,6 @@ return [
     |
     */
     'breadcrumb' => 'layouts::shared.breadcrumb',
+    'html' => 'Bootstrap4',
 
 ];

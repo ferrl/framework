@@ -96,11 +96,11 @@ class InputTest extends TestCase
         $expected = <<<'HTML'
 <fieldset class="form-group has-success margin-top">
     <label for="athlete_name">Name</label>
-    <input type="text" class="form-control no-border-radius" id="athlete_name" name="athlete[name]" value="@ferrl" placeholder="Enter your full name">
+    <input type="text" class="form-control no-border-radius" id="athlete_name" name="athlete[name]" value="@ferrl" placeholder="Enter your full name" required>
     <small class="text-muted">No abbreviations</small>
 </fieldset>
 HTML;
-        $actual = $this->invokeInaccessibleMethod('render', ['athlete[name]', '@ferrl', 'text', ['class' => 'no-border-radius', 'group-class' => 'margin-top', 'placeholder' => 'Enter your full name', 'help' => 'No abbreviations', 'label' => 'Name']]);
+        $actual = $this->invokeInaccessibleMethod('render', ['athlete[name]', '@ferrl', 'text', ['class' => 'no-border-radius', 'group-class' => 'margin-top', 'placeholder' => 'Enter your full name', 'help' => 'No abbreviations', 'label' => 'Name', 'required']]);
 
         $this->assertEquals($expected, $actual);
     }
@@ -113,11 +113,11 @@ HTML;
         $expected = <<<'HTML'
 <fieldset class="form-group has-success margin-top">
     <label for="athlete_password">Password</label>
-    <input type="password" class="form-control no-border-radius" id="athlete_password" name="athlete[password]" value="" placeholder="Enter your password">
+    <input type="password" class="form-control no-border-radius" id="athlete_password" name="athlete[password]" value="" placeholder="Enter your password" required>
     <small class="text-muted">Must contain at least one special character</small>
 </fieldset>
 HTML;
-        $actual = $this->invokeInaccessibleMethod('render', ['athlete[password]', '@ferrl', 'password', ['class' => 'no-border-radius', 'group-class' => 'margin-top', 'placeholder' => 'Enter your password', 'help' => 'Must contain at least one special character', 'label' => 'Password']]);
+        $actual = $this->invokeInaccessibleMethod('render', ['athlete[password]', '@ferrl', 'password', ['class' => 'no-border-radius', 'group-class' => 'margin-top', 'placeholder' => 'Enter your password', 'help' => 'Must contain at least one special character', 'label' => 'Password', 'required']]);
 
         $this->assertEquals($expected, $actual);
     }
