@@ -20,7 +20,8 @@
   },
   "require-dev": {
     "phpunit/phpunit": "^5.3",
-    "mockery/mockery": "^0.9.4"
+    "mockery/mockery": "^0.9.4",
+    "satooshi/php-coveralls": "^1.0"
   },
   "autoload": {
     "psr-4": {

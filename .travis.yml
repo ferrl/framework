@@ -11,4 +11,8 @@ install:
 
 # Defines build script
 script:
-  - vendor/bin/phpunit tests
+  - vendor/bin/phpunit tests --coverage-clover build/logs/clover.xml
+
+# Sends data to coveralls
+after_success:
+  - travis_retry php vendor/bin/coveralls -v

@@ -1,4 +1,5 @@
 # Folders
+build/
 reports/
 vendor/
 stub/application/bootstrap/cache
