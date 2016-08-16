@@ -3,10 +3,8 @@
 namespace tests\Ferrl\HTML;
 
 use Ferrl\Contracts\HTML\Input as InputContract;
-use Ferrl\Contracts\Modular\ModuleLoader as ModuleLoaderContract;
 use Ferrl\HTML\Bootstrap4\Input;
 use Ferrl\HTML\HtmlServiceProvider;
-use Mockery;
 use tests\TestCase;
 
 class HtmlServiceProviderTest extends TestCase
