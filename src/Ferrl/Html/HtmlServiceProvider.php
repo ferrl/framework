@@ -1,8 +1,8 @@
 <?php
 
-namespace Ferrl\HTML;
+namespace Ferrl\Html;
 
-use Ferrl\Contracts\HTML\Input as InputContract;
+use Ferrl\Contracts\Html\Input as InputContract;
 use Illuminate\Support\ServiceProvider;
 
 class HtmlServiceProvider extends ServiceProvider
@@ -16,7 +16,7 @@ class HtmlServiceProvider extends ServiceProvider
     {
         $this->app->singleton(InputContract::class, function () {
             $builder = config('ferrl.html', 'Bootstrap4');
-            $builder = 'Ferrl\\HTML\\'.$builder.'\\Input';
+            $builder = 'Ferrl\\Html\\'.$builder.'\\Input';
 
             return new $builder;
         });

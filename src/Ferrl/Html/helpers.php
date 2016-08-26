@@ -2,7 +2,7 @@
 
 namespace Helpers;
 
-if (! function_exists('input_field')) {
+if (! function_exists(__NAMESPACE__.'\\input_field')) {
     /**
      * Creates a new input field.
      *
@@ -15,13 +15,13 @@ if (! function_exists('input_field')) {
     function input_field($name, $value = null, $type = null, $attributes = [])
     {
         /** @var Input $input */
-        $input = app(\Ferrl\Contracts\HTML\Input::class);
+        $input = app(\Ferrl\Contracts\Html\Input::class);
 
         return $input->render($name, $value, $type, $attributes);
     }
 }
 
-if (! function_exists('email_field')) {
+if (! function_exists(__NAMESPACE__.'\\email_field')) {
     /**
      * Creates a new email field.
      *
@@ -36,7 +36,7 @@ if (! function_exists('email_field')) {
     }
 }
 
-if (! function_exists('password_field')) {
+if (! function_exists(__NAMESPACE__.'\\password_field')) {
     /**
      * Creates a new password field.
      *
@@ -50,7 +50,7 @@ if (! function_exists('password_field')) {
     }
 }
 
-if (! function_exists('text_field')) {
+if (! function_exists(__NAMESPACE__.'\\text_field')) {
     /**
      * Creates a new text field.
      *

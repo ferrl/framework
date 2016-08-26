@@ -1,9 +1,9 @@
 <?php
 
-namespace Ferrl\HTML\Bootstrap4;
+namespace Ferrl\Html\Bootstrap4;
 
 use Ferrl\Contracts\HTML\Input as InputContract;
-use Ferrl\HTML\Processable;
+use Ferrl\Html\Processable;
 
 class Input extends Processable implements InputContract
 {

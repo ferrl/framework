@@ -1,6 +1,6 @@
 <?php
 
-namespace tests\Ferrl\HTML;
+namespace tests\Ferrl\Html;
 
 use Ferrl\Html\Bootstrap4\Input;
 use Illuminate\Support\MessageBag;

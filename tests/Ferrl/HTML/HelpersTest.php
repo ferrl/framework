@@ -1,6 +1,6 @@
 <?php
 
-namespace tests\Ferrl\HTML;
+namespace tests\Ferrl\Html;
 
 use Helpers;
 use Mockery;
@@ -14,9 +14,9 @@ class HelpersTest extends TestCase
     public function testInputFieldCallsRender()
     {
         /** @var Mockery\Mock $mock */
-        $mock = Mockery::mock('Ferrl\Contracts\HTML\Input');
+        $mock = Mockery::mock('Ferrl\Contracts\Html\Input');
         $mock->shouldReceive('render')->once()->andReturn('<input>');
-        $this->app->instance('Ferrl\Contracts\HTML\Input', $mock);
+        $this->app->instance('Ferrl\Contracts\Html\Input', $mock);
 
         Helpers\input_field('name');
     }
@@ -27,9 +27,9 @@ class HelpersTest extends TestCase
     public function testEmailFieldCallsRender()
     {
         /** @var Mockery\Mock $mock */
-        $mock = Mockery::mock('Ferrl\Contracts\HTML\Input');
+        $mock = Mockery::mock('Ferrl\Contracts\Html\Input');
         $mock->shouldReceive('render')->once()->andReturn('<input>');
-        $this->app->instance('Ferrl\Contracts\HTML\Input', $mock);
+        $this->app->instance('Ferrl\Contracts\Html\Input', $mock);
 
         Helpers\email_field('email');
     }
@@ -40,9 +40,9 @@ class HelpersTest extends TestCase
     public function testPasswordFieldCallsRender()
     {
         /** @var Mockery\Mock $mock */
-        $mock = Mockery::mock('Ferrl\Contracts\HTML\Input');
+        $mock = Mockery::mock('Ferrl\Contracts\Html\Input');
         $mock->shouldReceive('render')->once()->andReturn('<input>');
-        $this->app->instance('Ferrl\Contracts\HTML\Input', $mock);
+        $this->app->instance('Ferrl\Contracts\Html\Input', $mock);
 
         Helpers\password_field('password');
     }
@@ -53,9 +53,9 @@ class HelpersTest extends TestCase
     public function testTextFieldCallsRender()
     {
         /** @var Mockery\Mock $mock */
-        $mock = Mockery::mock('Ferrl\Contracts\HTML\Input');
+        $mock = Mockery::mock('Ferrl\Contracts\Html\Input');
         $mock->shouldReceive('render')->once()->andReturn('<input>');
-        $this->app->instance('Ferrl\Contracts\HTML\Input', $mock);
+        $this->app->instance('Ferrl\Contracts\Html\Input', $mock);
 
         Helpers\text_field('name');
     }

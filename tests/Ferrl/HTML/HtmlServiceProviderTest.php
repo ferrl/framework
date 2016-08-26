@@ -1,10 +1,10 @@
 <?php
 
-namespace tests\Ferrl\HTML;
+namespace tests\Ferrl\Html;
 
-use Ferrl\Contracts\HTML\Input as InputContract;
-use Ferrl\HTML\Bootstrap4\Input;
-use Ferrl\HTML\HtmlServiceProvider;
+use Ferrl\Contracts\Html\Input as InputContract;
+use Ferrl\Html\Bootstrap4\Input;
+use Ferrl\Html\HtmlServiceProvider;
 use tests\TestCase;
 
 class HtmlServiceProviderTest extends TestCase

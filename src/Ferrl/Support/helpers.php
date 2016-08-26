@@ -2,7 +2,7 @@
 
 namespace Helpers;
 
-if (! function_exists('add_breadcrumb')) {
+if (! function_exists(__NAMESPACE__.'\\add_breadcrumb')) {
     /**
      * Adds a new crumb to a default breadcrumb.
      *
@@ -16,7 +16,7 @@ if (! function_exists('add_breadcrumb')) {
     }
 }
 
-if (! function_exists('breadcrumb')) {
+if (! function_exists(__NAMESPACE__.'\\breadcrumb')) {
     /**
      * Return a breadcrumb instance.
      *
@@ -28,7 +28,7 @@ if (! function_exists('breadcrumb')) {
     }
 }
 
-if (! function_exists('globals')) {
+if (! function_exists(__NAMESPACE__.'\\globals')) {
     /**
      * Alias to the registry function.
      *
@@ -42,7 +42,7 @@ if (! function_exists('globals')) {
     }
 }
 
-if (! function_exists('registry')) {
+if (! function_exists(__NAMESPACE__.'\\registry')) {
     /**
      * Handles global variables in a controlled namespace.
      *
@@ -67,7 +67,7 @@ if (! function_exists('registry')) {
     }
 }
 
-if (! function_exists('render_breadcrumbs')) {
+if (! function_exists(__NAMESPACE__.'\\render_breadcrumbs')) {
     /**
      * Renders the default breadcrumb.
      *
