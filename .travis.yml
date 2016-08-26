@@ -8,6 +8,7 @@ php:
 # Installs required dependencies
 install:
   - composer install
+  - composer dump
 
 # Defines build script
 script:
