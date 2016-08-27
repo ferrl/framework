@@ -28,7 +28,7 @@
       "Ferrl\\": "src/Ferrl/"
     },
     "files": [
-      "src/Ferrl/HTML/helpers.php",
+      "src/Ferrl/Html/helpers.php",
       "src/Ferrl/Support/helpers.php"
     ]
   },
