@@ -1,6 +1,6 @@
 <?php
 
-namespace Ferrl\Contracts\HTML;
+namespace Ferrl\Contracts\Html;
 
 interface Input
 {

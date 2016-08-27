@@ -1,6 +1,6 @@
 <?php
 
-namespace tests\Ferrl\HTML;
+namespace tests\Ferrl\Html;
 
 use Ferrl\Html\Processable;
 use tests\TestCase;

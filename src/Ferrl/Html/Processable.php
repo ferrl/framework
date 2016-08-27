@@ -1,6 +1,6 @@
 <?php
 
-namespace Ferrl\HTML;
+namespace Ferrl\Html;
 
 use Illuminate\Support\ViewErrorBag;
 
