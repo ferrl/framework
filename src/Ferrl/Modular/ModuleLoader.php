@@ -46,7 +46,7 @@ class ModuleLoader implements ModuleLoaderContract
      */
     protected function getModulesList()
     {
-        $modules = config('modules.available');
+        $modules = config('modules.available', []);
         ksort($modules);
 
         return array_values($modules);
