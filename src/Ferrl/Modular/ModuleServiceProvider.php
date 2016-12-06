@@ -14,6 +14,10 @@ class ModuleServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        $this->publishes([
+            __DIR__ . '../../../stub/tests/modules.php' => config_path('modules.php')
+        ], 'modular');
+
         /** @var ModuleLoaderContract $loader */
         $loader = $this->app->make(ModuleLoaderContract::class);
         $loader->bootstrap();
