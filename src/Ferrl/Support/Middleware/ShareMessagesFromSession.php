@@ -34,7 +34,7 @@ class ShareMessagesFromSession
      */
     public function handle($request, Closure $next)
     {
-        $types = flashes()->getTypes();
+        $types = \Helpers\flashes()->getTypes();
 
         foreach ($types as $type) {
             $this->view->share(
