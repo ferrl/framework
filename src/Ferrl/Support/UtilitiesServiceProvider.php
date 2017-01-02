@@ -9,6 +9,18 @@ use Illuminate\Support\ServiceProvider;
 class UtilitiesServiceProvider extends ServiceProvider
 {
     /**
+     * Bootstrap any application services.
+     *
+     * @return void
+     */
+    public function boot()
+    {
+        $this->publishes([
+            __DIR__.'/../../../stub/tests/ferrl.php' => config_path('ferrl.php'),
+        ], 'ferrl');
+    }
+
+    /**
      * Register any application services.
      *
      * @return void
