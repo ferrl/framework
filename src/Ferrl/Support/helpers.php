@@ -28,6 +28,18 @@ if (! function_exists(__NAMESPACE__.'\\breadcrumb')) {
     }
 }
 
+if (! function_exists('flashes')) {
+    /**
+     * Get the flashes singleton instance.
+     *
+     * @return \Ferrl\Support\Utils\FlashMessages
+     */
+    function flashes()
+    {
+        return app(\Ferrl\Support\Utils\FlashMessages::class);
+    }
+}
+
 if (! function_exists(__NAMESPACE__.'\\globals')) {
     /**
      * Alias to the registry function.
