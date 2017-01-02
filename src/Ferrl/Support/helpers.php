@@ -28,7 +28,7 @@ if (! function_exists(__NAMESPACE__.'\\breadcrumb')) {
     }
 }
 
-if (! function_exists('flashes')) {
+if (! function_exists(__NAMESPACE__.'\\flashes')) {
     /**
      * Get the flashes singleton instance.
      *
