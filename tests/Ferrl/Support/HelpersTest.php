@@ -4,7 +4,6 @@ namespace tests\Ferrl\Modular\Exceptions;
 
 use Ferrl\Contracts\Support\Utils\Breadcrumb as BreadcrumbContract;
 use Ferrl\Support\Utils\Breadcrumb;
-use Helpers;
 use Illuminate\View\Factory as View;
 use tests\TestCase;
 
@@ -41,7 +40,7 @@ class HelpersTest extends TestCase
      */
     public function testRegistryReturnsDefaultValue()
     {
-        $value = Helpers\registry('something.inexistent', 'default value');
+        $value = registry('something.inexistent', 'default value');
 
         $this->assertEquals('default value', $value);
     }
@@ -51,9 +50,9 @@ class HelpersTest extends TestCase
      */
     public function testRegistryUpdateValues()
     {
-        Helpers\registry(['key' => 'overridden value']);
-        Helpers\registry(['key' => 'current value']);
-        $value = Helpers\registry('key', 'default value');
+        registry(['key' => 'overridden value']);
+        registry(['key' => 'current value']);
+        $value = registry('key', 'default value');
 
         $this->assertEquals('current value', $value);
     }
@@ -63,9 +62,9 @@ class HelpersTest extends TestCase
      */
     public function testRegistryReturnAllValues()
     {
-        Helpers\registry(['key1' => 'value1']);
-        Helpers\registry(['key2' => 'value2']);
-        $values = Helpers\registry();
+        registry(['key1' => 'value1']);
+        registry(['key2' => 'value2']);
+        $values = registry();
 
         $this->assertArrayHasKey('key1', $values);
         $this->assertArrayHasKey('key2', $values);
@@ -76,9 +75,9 @@ class HelpersTest extends TestCase
      */
     public function testGlobalsReturnAllValues()
     {
-        Helpers\registry(['key1' => 'value1']);
-        Helpers\registry(['key2' => 'value2']);
-        $values = Helpers\globals();
+        registry(['key1' => 'value1']);
+        registry(['key2' => 'value2']);
+        $values = globals();
 
         $this->assertArrayHasKey('key1', $values);
         $this->assertArrayHasKey('key2', $values);
@@ -93,11 +92,11 @@ class HelpersTest extends TestCase
             return new Breadcrumb();
         });
 
-        Helpers\add_breadcrumb('First', 'first.html');
-        Helpers\add_breadcrumb('Second', 'second.html');
+        add_breadcrumb('First', 'first.html');
+        add_breadcrumb('Second', 'second.html');
 
         $crawler = new \DOMDocument;
-        $crawler->loadHTML(Helpers\render_breadcrumb());
+        $crawler->loadHTML(render_breadcrumb());
 
         $this->assertEquals(1, $crawler->getElementsByTagName('ul')->length);
         $this->assertEquals(2, $crawler->getElementsByTagName('li')->length);

@@ -1,7 +1,5 @@
 <?php
 
-namespace Helpers;
-
 if (! function_exists(__NAMESPACE__.'\\add_breadcrumb')) {
     /**
      * Adds a new crumb to a default breadcrumb.
