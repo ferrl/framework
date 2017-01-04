@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Modules\Frontend;
+namespace App\Modules\Stub;
 
 use Ferrl\Modular\ModuleDefinition;
 use Illuminate\Routing\Router;
@@ -15,6 +15,6 @@ class Module extends ModuleDefinition
      */
     public function bindRoutes(Router $router)
     {
-        $router->get('/', ['as' => 'frontend.index', 'uses' => 'DefaultController@index']);
+        $router->get('/', ['as' => 'stub.index', 'uses' => 'DefaultController@index']);
     }
 }

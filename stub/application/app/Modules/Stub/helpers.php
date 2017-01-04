@@ -1,6 +1,6 @@
 <?php
 
-namespace Frontend;
+namespace Stub;
 
 /**
  * Method used for test cases.

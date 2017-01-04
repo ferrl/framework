@@ -2,7 +2,7 @@
 
 namespace tests\Ferrl\Modular;
 
-use App\Modules\Frontend\Module;
+use App\Modules\Stub\Module;
 use Ferrl\Modular\ModuleDefinition;
 use tests\TestCase;
 
@@ -27,7 +27,7 @@ class ModuleDefinitionTest extends TestCase
      */
     protected function constructorArgs()
     {
-        return [$this->app, 'frontend'];
+        return [$this->app, 'stub'];
     }
 
     /**
@@ -70,7 +70,7 @@ class ModuleDefinitionTest extends TestCase
     {
         $namespace = $this->invokeInaccessibleMethod('getModulesNamespace');
 
-        $this->assertEquals('App\\Modules\\Frontend', $namespace);
+        $this->assertEquals('App\\Modules\\Stub', $namespace);
     }
 
     /**
@@ -90,7 +90,7 @@ class ModuleDefinitionTest extends TestCase
     {
         $this->invokeInaccessibleMethod('loadHelpers');
 
-        $this->assertTrue(function_exists('Frontend\\testMethod'));
+        $this->assertTrue(function_exists('Stub\\testMethod'));
     }
 
     /**
@@ -101,10 +101,10 @@ class ModuleDefinitionTest extends TestCase
         /* @var \Illuminate\Routing\Router $router */
         $this->invokeInaccessibleMethod('loadRoutes');
         $router = app(\Illuminate\Routing\Router::class);
-        $action = $router->getRoutes()->getByName('frontend.index')->getAction();
+        $action = $router->getRoutes()->getByName('stub.index')->getAction();
 
-        $this->assertTrue($router->has('frontend.index'));
-        $this->assertEquals('App\\Modules\\Frontend\\Controllers', $action['namespace']);
+        $this->assertTrue($router->has('stub.index'));
+        $this->assertEquals('App\\Modules\\Stub\\Controllers', $action['namespace']);
     }
 
     /**
@@ -116,7 +116,7 @@ class ModuleDefinitionTest extends TestCase
         $this->invokeInaccessibleMethod('loadViews');
         $view = app(\Illuminate\View\Factory::class);
 
-        $this->assertTrue($view->exists('frontend::index'));
+        $this->assertTrue($view->exists('stub::index'));
     }
 
     /**
