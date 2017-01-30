@@ -21,13 +21,14 @@ class ModuleDefinitionTest extends TestCase
     protected $modules = null;
 
     /**
-     * Parameters used to instantiate class under test.
+     * Hook to be called after construction.
      *
-     * @return array
+     * @param Module $instance
      */
-    protected function constructorArgs()
+    protected function constructorHooks($instance)
     {
-        return [$this->app, 'stub'];
+        $instance->setApp($this->app);
+        $instance->setName('stub');
     }
 
     /**

@@ -53,14 +53,9 @@ abstract class ModuleDefinition implements ModuleDefinitionContract
 
     /**
      * ModuleDefinition constructor.
-     *
-     * @param \Illuminate\Foundation\Application|null $app
-     * @param string $name
      */
-    public function __construct($app = null, $name = null)
+    public function __construct()
     {
-        $this->app = $app ?: app();
-        $this->name = $this->name ?: $name;
     }
 
     /**
@@ -174,6 +169,26 @@ abstract class ModuleDefinition implements ModuleDefinitionContract
         if (file_exists($viewsFolder)) {
             $view->addNamespace($this->getModulesPrefix(), $viewsFolder);
         }
+    }
+
+    /**
+     * Set laravel's container instance.
+     *
+     * @param \Illuminate\Foundation\Application $app
+     */
+    public function setApp($app)
+    {
+        $this->app = $app;
+    }
+
+    /**
+     * Set name of the module.
+     *
+     * @param string $name
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
     }
 
     /**

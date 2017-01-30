@@ -71,6 +71,10 @@ abstract class TestCase extends LaravelTestCase
 
         if (! $this->underTestInstance) {
             $this->underTestInstance = $reflection->newInstanceArgs($this->constructorArgs());
+
+            if (method_exists($this, 'constructorHooks')) {
+                $this->constructorHooks($this->underTestInstance);
+            }
         }
 
         $method = $reflection->getMethod($method);

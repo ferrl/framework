@@ -80,6 +80,8 @@ class ModuleLoaderTest extends TestCase
     {
         /** @var Mockery\Mock $mock */
         $mock = Mockery::mock('Ferrl\Contracts\Modular\ModuleDefinition');
+        $mock->shouldReceive('setApp')->once();
+        $mock->shouldReceive('setName')->once();
         $mock->shouldReceive('bootstrap')->once()->andReturn(true);
         $this->app->instance('App\\Modules\\Frontend\\Module', $mock);
 
@@ -121,6 +123,8 @@ class ModuleLoaderTest extends TestCase
     {
         /** @var Mockery\Mock $mock */
         $mock = Mockery::mock('Ferrl\Contracts\Modular\ModuleDefinition');
+        $mock->shouldReceive('setApp')->twice();
+        $mock->shouldReceive('setName')->twice();
         $mock->shouldReceive('bootstrap')->twice()->andReturn(true);
         $this->app->instance('App\\Modules\\Frontend\\Module', $mock);
         $this->app->instance('App\\Modules\\Other\\Module', $mock);
