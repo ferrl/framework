@@ -68,14 +68,14 @@ class ModuleLoader implements ModuleLoaderContract
     /**
      * Load a single module by it's name.
      *
-     * @param string $module
+     * @param string $moduleName
      * @throws InvalidSignatureException module does'nt implement the right interface
      * @throws ModuleNotFoundException module does'nt exists
      * @return bool
      */
-    protected function enableModule($module)
+    protected function enableModule($moduleName)
     {
-        $definition = $this->getFullyQualifiedModuleClassName($module).'\\Module';
+        $definition = $this->getFullyQualifiedModuleClassName($moduleName).'\\Module';
 
         if (! (class_exists($definition) || $this->app->bound($definition))) {
             throw new ModuleNotFoundException("Module {$definition} does'nt exist");
@@ -89,7 +89,7 @@ class ModuleLoader implements ModuleLoaderContract
         }
 
         $module->setApp($this->app);
-        $module->setName($module);
+        $module->setName($moduleName);
 
         return $module->bootstrap();
     }
