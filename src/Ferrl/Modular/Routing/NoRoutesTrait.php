@@ -2,18 +2,18 @@
 
 namespace Ferrl\Modular\Routing;
 
-use Illuminate\Routing\Router;
+use Illuminate\Contracts\Routing\Registrar;
 
 trait NoRoutesTrait
 {
     /**
      * Bind application routes.
      *
-     * @param \Illuminate\Routing\Router $router
+     * @param Registrar $router
      * @return void
      * @codeCoverageIgnore
      */
-    public function bindRoutes(Router $router)
+    public function bindRoutes(Registrar $router)
     {
         //
     }
