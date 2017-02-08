@@ -3,17 +3,17 @@
 namespace App\Modules\Stub;
 
 use Ferrl\Modular\ModuleDefinition;
-use Illuminate\Routing\Router;
+use Illuminate\Contracts\Routing\Registrar;
 
 class Module extends ModuleDefinition
 {
     /**
      * Bind application routes.
      *
-     * @param \Illuminate\Routing\Router $router
+     * @param Registrar $router
      * @return void
      */
-    public function bindRoutes(Router $router)
+    public function bindRoutes(Registrar $router)
     {
         $router->get('/', ['as' => 'stub.index', 'uses' => 'DefaultController@index']);
     }

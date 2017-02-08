@@ -4,7 +4,7 @@ namespace Ferrl\Modular;
 
 use Doctrine\Common\Inflector\Inflector;
 use Ferrl\Contracts\Modular\ModuleDefinition as ModuleDefinitionContract;
-use Illuminate\Routing\Router;
+use Illuminate\Contracts\Routing\Registrar;
 use Illuminate\View\Factory as View;
 
 abstract class ModuleDefinition implements ModuleDefinitionContract
@@ -146,8 +146,8 @@ abstract class ModuleDefinition implements ModuleDefinitionContract
      */
     protected function loadRoutes()
     {
-        /** @var Router $router */
-        $router = $this->app->make(Router::class);
+        /** @var Registrar $router */
+        $router = $this->app->make('router');
         $namespace = $this->getModulesNamespace().'\\Controllers';
 
         $router->group(compact('namespace'), function () use ($router) {
@@ -194,8 +194,8 @@ abstract class ModuleDefinition implements ModuleDefinitionContract
     /**
      * Bind application routes.
      *
-     * @param \Illuminate\Routing\Router $router
+     * @param Registrar $router
      * @return void
      */
-    abstract public function bindRoutes(Router $router);
+    abstract public function bindRoutes(Registrar $router);
 }
